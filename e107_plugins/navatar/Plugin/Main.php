@@ -128,39 +128,6 @@ abstract class Main
 
 
 	/**
-	 * Writes passed in data to a log file
-	 *
-	 * @param mixed  $content
-	 *  The data to be logged.
-	 * @param string $logName
-	 *  Name the log file that need to be written to file-system.
-	 * @param string $location
-	 */
-	public static function log(
-		$content, $logName = 'navatar-log', $location = \e_PLUGIN
-	) {
-		$date = date('l jS \of F Y h:i:s A');
-		if ($location === \e_PLUGIN) {
-			$path = $location . 'navatar/logs/';
-		} else {
-			$path = $location . 'navatar/';
-		}
-
-		if ( ! file_exists($path)) {
-			mkdir($path, 0777, true);
-		}
-
-		if (is_array($content) || is_object($content)) {
-			$content = var_export($content, true);
-		}
-
-		file_put_contents($path . $logName . '.log',
-			' --- ' . $date . ' --- ' . PHP_EOL . $content . PHP_EOL,
-			FILE_APPEND);
-	}
-
-
-	/**
 	 * Gets preference
 	 *
 	 * @return array

@@ -321,7 +321,7 @@ class NavatarAdminTools extends e_admin_ui
 
 					$removal = File::remove('*');
 
-					if (count($removal['fail']) > 0) {
+					if (count(varset($removal['fail'], array())) > 0) {
 						$failMessage =
 							$tp->lanVars(LAN_NAVATAR_TIDY_MES_WARN_FAIL_DELETE,
 								['files' => implode(', ', $removal['fail'])]);
